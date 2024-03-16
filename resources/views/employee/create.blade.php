@@ -10,7 +10,9 @@
 
 <div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-md">
     <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-        <h1 class="text-2xl mb-4">Add Employee</h1>
+    <div class="px-6 py-4 border-b border-gray-300">
+                <h1 class="text-2xl font-semibold mb-4">Add Employee</h1>
+                </div>
         
         @if ($errors->any())
             <div class="mb-4">

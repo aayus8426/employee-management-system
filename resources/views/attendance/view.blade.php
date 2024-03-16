@@ -1,10 +1,13 @@
 @extends('master')
 @section('content')
-<div class="container mx-auto">
+<div class="container mx-auto px-4 py-8">
     <div class="flex justify-center">
         <div class="w-full md:w-3/4 lg:w-1/2">
             <div class="bg-white shadow-md rounded-md">
-                <div class="px-6 py-4 bg-gray-200 border-b border-gray-300">
+            <div class="px-6 py-4  border-b border-gray-300">
+                <h1 class="text-2xl font-semibold mb-4">Show Attendance</h1>
+                </div>
+                <div class="px-6 py-4 border-b border-gray-300">
                     Attendance for {{ $selectedDate }}
                 </div>
 

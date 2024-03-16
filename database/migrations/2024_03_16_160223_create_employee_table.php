@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // Foreign key to the users table
             $table->string('name');
             $table->string('email')->unique();
             $table->string('phone');
@@ -22,6 +23,7 @@ return new class extends Migration
             $table->string('designation');
             $table->integer('salary');
             $table->timestamps();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }
@@ -33,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('employee');
     }
 };

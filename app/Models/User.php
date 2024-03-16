@@ -55,8 +55,12 @@ public function hasRole($role)
     return $this->role == $role;
 }
 public function leaveApplications()
+{
+    return $this->hasMany(LeaveApplication::class, 'employee_id');
+}
+    public function employee()
     {
-        return $this->hasMany(LeaveApplication::class, 'employee_id');
+        return $this->hasOne(Employee::class);
     }
-
+    
 }

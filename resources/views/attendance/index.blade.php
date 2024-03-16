@@ -5,17 +5,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Record Employee Attendance</title>
     <!-- Include Tailwind CSS stylesheets -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="container mx-auto">
+<body class="bg-gray-100">
+<div class="container mx-auto px-4 py-8">
     <div class="flex justify-center">
         <div class="w-full md:w-3/4 lg:w-1/2">
             <div class="bg-white shadow-md rounded-md">
-                <div class="px-6 py-4 bg-gray-200 border-b border-gray-300">
-                    Record Employee Attendance
+                <div class="px-6 py-4 border-b border-gray-300">
+                <h1 class="text-2xl font-semibold mb-4">Record Attendance</h1>
                 </div>
 
                 <div class="px-6 py-4">

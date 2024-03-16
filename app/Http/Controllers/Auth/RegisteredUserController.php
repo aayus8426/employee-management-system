@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\View\View;
+use App\Models\Employee;
+use Faker\Factory as Faker;
 
 class RegisteredUserController extends Controller
 {
@@ -33,14 +35,28 @@ class RegisteredUserController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'role' => ['required', 'string', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
+        $faker = Faker::create();
+        if ($request->input('role') === 'employee') {
+            // Create the employee record and associate it with the user
+            $user->employee()->create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'department' => $faker->word,
+                'designation' => $faker->jobTitle,
+                'phone' => $faker->phoneNumber,
+                'salary' => $faker->numberBetween(40000, 100000),
+            ]);
+        }
 
         event(new Registered($user));
 
@@ -48,4 +64,6 @@ class RegisteredUserController extends Controller
 
         return redirect(RouteServiceProvider::HOME);
     }
+
+    
 }

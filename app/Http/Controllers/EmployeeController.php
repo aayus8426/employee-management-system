@@ -12,7 +12,7 @@ class EmployeeController extends Controller
     }
     public function getEmployee()
     {
-        $employees = Employee::all(); // Fetch all employees from the database
+        $employees = Employee::all();
         return view('employee.index', compact('employees'));
     }
 
@@ -39,4 +39,17 @@ class EmployeeController extends Controller
         // Redirect back or to a success page
         return redirect()->route('employee.index')->with('success', 'Employee added successfully!');
     }
+
+    public function viewLeaves()
+    {
+        $user = auth()->user();
+        if ($user->employee) {
+            $availableLeaves = $user->employee->available_leaves;
+            return view('leave.earnedleaves', compact('availableLeaves'));
+        } else {
+            // Handle the case where the user doesn't have an associated employee record
+            // For example, redirect the user to a page indicating that they need to contact HR.
+        }
+    }
+
 }
