@@ -7,6 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+Installation process
+
+1) npm run dev
+2) php artisan serve
+3) touch database/database.sqlite
+4) php artisan migrate
+5) php artisan db:seed
+6) Register an user
+7) Then login after login you can see the dashboard
+8) Do crud Operations
+   
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
