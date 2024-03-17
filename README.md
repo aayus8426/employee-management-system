@@ -18,7 +18,7 @@ Installation process
 7) php artisan migrate
 8) Run php artisan serve
 9) Go to link localhost:8000
-10) Register the User with role Super Admin and Admin
+10) Register the User with role Super Admin and Employee
 11) When the Admin logins the admin section can only be accesed in the system
 12) When the Employee logins the employee section can only be accesed in the system
 13) Do crud Operations
