@@ -1,7 +1,9 @@
 <x-guest-layout>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
-
+    <div>
+        <h1 class="font-bold text-2xl text-center">Employee Management System</h1><br>
+    </div>
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
@@ -32,14 +34,27 @@
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <!-- Links -->
+        <div class="flex items-center justify-between mt-4">
+            <div>
+                @if (Route::has('register'))
+                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('register') }}">
+                        {{ __('Create an account') }}
+                    </a>
+                @endif
+            </div>
+            <div>
+                @if (Route::has('password.request'))
+                    <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}">
+                        {{ __('Forgot your password?') }}
+                    </a>
+                @endif
+            </div>
+        </div>
 
-            <x-primary-button class="ml-3">
+        <!-- Login Button -->
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button>
                 {{ __('Log in') }}
             </x-primary-button>
         </div>

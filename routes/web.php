@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\LeaveSettingsController;
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,9 +18,9 @@ use App\Http\Controllers\LeaveController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('login');
+// });
 // Route::get('/admin', function () {
 //     return view('attendance.index');
 // })->middleware('role:super_admin');
@@ -32,25 +34,24 @@ Route::middleware(['auth', 'role:employee'])->group(function () {
     Route::get('/leave', [LeaveController::class, 'index'])->name('leave.index');
     Route::post('/leave', [LeaveController::class, 'apply'])->name('leave.apply');
     Route::get('myleave',[LeaveController::class,'myleave'])->name('leave.myleave');
-    // Route for HR Admin to view pending leave requests
-
-
-    // Route for HR Admin to approve a leave request
-
-
-
 });
+
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/leave/pending', [LeaveController::class, 'pendingLeave'])->name('leave.pending');
     Route::put('/leave/{leaveApplication}/approve', [LeaveController::class, 'approve'])->name('leave.approve');
-
-    // Route for HR Admin to reject a leave request
     Route::put('/leave/{leaveApplication}/reject', [LeaveController::class, 'reject'])->name('leave.reject');
-});
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/employees', [EmployeeController::class, 'getEmployee']);
+    Route::get('/settings', [LeaveSettingsController::class,'index'])->name('settings.index');
+Route::put('/settings', [LeaveSettingsController::class,'update'])->name('settings.update');
+Route::get('/employees', [EmployeeController::class, 'getEmployee']);
 Route::get('/employees/create', [EmployeeController::class, 'create'])->name('employees.create');
 Route::post('/employees', [EmployeeController::class, 'addEmployee'])->name('employees.store');
+Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
+Route::get('/attendance/show', [AttendanceController::class, 'show'])->name('attendance.show');
+});
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+
 
 });
 
@@ -68,13 +69,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/employee/leaves', [EmployeeController::class, 'viewLeaves'])->name('employee.leaves');
 
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
-    Route::post('/attendance/store', [AttendanceController::class, 'store'])->name('attendance.store');
 
-    Route::get('/attendance/show', [AttendanceController::class, 'show'])->name('attendance.show');
-});
 
 Route::get('/profile', [ProfileController::class, 'show'])->name('profile')->middleware('auth');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+
+
+
 require __DIR__ . '/auth.php';

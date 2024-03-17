@@ -1,20 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Employee</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head>
-<body class="bg-gray-100">
 
-<div class="container mx-auto py-6 px-4 sm:px-6 lg:px-8 max-w-md">
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-    <div class="px-6 py-4 border-b border-gray-300">
-                <h1 class="text-2xl font-semibold mb-4">Add Employee</h1>
-                </div>
-        
-        @if ($errors->any())
+@extends('master')
+
+@section('content')
+<div class="ml-64 mx-auto py-6 sm:px-6 lg:px-8">
+    <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+            <div class="px-6 py-4 ">
+                <h1 class="text-2xl font-semibold mb-4">Add an Employee</h1>
+            </div>
+        </div>
+        <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
+            <div class="overflow-x-auto">
+            @if ($errors->any())
             <div class="mb-4">
                 <strong class="text-red-500">Error:</strong>
                 <ul class="list-disc list-inside text-red-500">
@@ -65,8 +62,14 @@
                 </button>
             </div>
         </form>
+            </div>
+        </div>
     </div>
 </div>
+
+
+@endsection
+
 
 </body>
 </html>
