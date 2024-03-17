@@ -9,14 +9,19 @@
 
 Installation process
 
-1) npm run dev
-2) php artisan serve
-3) touch database/database.sqlite
-4) php artisan migrate
-5) php artisan db:seed
-6) Register an user
-7) Then login after login you can see the dashboard
-8) Do crud Operations
+1) npm run install
+2) composer install
+3) cp .env.example .env
+4) In the .env file change DC_CONNECTION to sqlite
+5) touch database/database.sqlite
+6) php artisan key:generate
+7) php artisan migrate
+8) Run php artisan serve
+9) Go to link localhost:8000
+10) Register the User with role Super Admin and Admin
+11) When the Admin logins the admin section can only be accesed in the system
+12) When the Employee logins the employee section can only be accesed in the system
+13) Do crud Operations
    
 ## About Laravel
 
